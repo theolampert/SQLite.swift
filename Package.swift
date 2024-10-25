@@ -46,8 +46,13 @@ package.dependencies = [
 package.targets.first?.dependencies += [
     .product(name: "CSQLite", package: "CSQLite")
 ]
-#elseif !os(macOS)
-package.targets[0].swiftSettings = [
-    .define("SQLITE_SWIFT_STANDALONE")
+#endif
+
+#if os(Windows)
+package.dependencies = [
+    .package(url: "https://github.com/sbooth/CSQLite", from: "3.47.0")
+]
+package.targets.first?.dependencies += [
+    .product(name: "CSQLite", package: "CSQLite")
 ]
 #endif
