@@ -47,3 +47,9 @@ package.targets.first?.dependencies += [
     .product(name: "CSQLite", package: "CSQLite")
 ]
 #endif
+
+#if os(Windows)
+package.targets[0].swiftSettings = [
+    .define("SQLITE_SWIFT_STANDALONE")
+]
+#endif
